@@ -31,7 +31,7 @@ pipeline {
                     sh 'docker login -u $dockerUser -p $dockerPass'
                     sh 'docker image tag calc-app:latest irshadshaikh63/calc-app:latest'
                     sh 'docker push $dockerUser/calc-app:latest'
-                    sh 'docker rmi calc-app:latest'
+                    sh 'docker image prune -f'
                 }
             }
         }
