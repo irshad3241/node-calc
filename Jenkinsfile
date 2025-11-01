@@ -31,13 +31,14 @@ pipeline {
                     sh 'docker login -u $dockerUser -p $dockerPass'
                     sh 'docker image tag calc-app:latest irshadshaikh63/calc-app:latest'
                     sh 'docker push $dockerUser/calc-app:latest'
+                    sh 'docker rmi calc-app:latest'
                 }
             }
         }
         stage('Deploy') {
             steps {
                 echo "Running container..."
-                sh "docker run -d --name calc-app -p 3000:3000 calc-app:latest"
+                sh "docker run -d --name calc-app -p 3000:3000 irshadshaikh63/calc-app:latest"
             }
         }
     }
