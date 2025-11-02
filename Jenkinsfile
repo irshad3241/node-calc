@@ -1,3 +1,4 @@
+@Library("sharedLib") _
 pipeline {
     agent {
         label "irshad"
