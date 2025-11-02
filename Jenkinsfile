@@ -13,8 +13,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo "Building Docker image..."
-                sh "docker build -t calc-app:latest ."
+                script{
+                    build('calc-app','latest')
+                }
             }
         }
         stage('Remove prev-container') {
