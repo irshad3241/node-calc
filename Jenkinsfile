@@ -5,8 +5,9 @@ pipeline {
     stages {
         stage('Code') {
             steps {
-                echo "Cloning code..."
-                git branch: 'main', url: 'https://github.com/irshad3241/node-calc.git'
+                script{
+                    clone('https://github.com/irshad3241/node-calc.git','main')
+                }
             }
         }
         stage('Build') {
